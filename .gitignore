@@ -5,3 +5,13 @@ __pycache__
 */__pycache__
 *.pyc
 gradio*
+
+
+# tykim
+# --------------------------------
+# ignore virtual environment
+env/*
+
+# ignore all files in outputs_streaming
+outputs_streaming/*
+# --------------------------------
