@@ -90,4 +90,12 @@ if __name__ == '__main__':
 
     depth_vis_path = os.path.join(args.output_dir, os.path.splitext(video_name)[0]+'_vis.mp4')
     depths = np.stack(depths, axis=0)
+
+    # --- 여기서 height/width 2의 배수 맞추기! ---
+    h, w = depths.shape[1:3]
+    h_even = h if h % 2 == 0 else h - 1
+    w_even = w if w % 2 == 0 else w - 1
+    depths = depths[:, :h_even, :w_even]
+    # -------------------------------------------
+
     save_video(depths, depth_vis_path, fps=fps, is_depths=True, grayscale=args.grayscale)
